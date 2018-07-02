@@ -13,6 +13,8 @@ public class Presenter implements Contract.Presenter {
   @Override public void getUserInput(String cityName) {
     if (cityName.equals("")) {
       view.showToast(R.string.empty);
+    } else {
+      model.cityNameIsOk(cityName);
     }
   }
 }

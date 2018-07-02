@@ -13,5 +13,6 @@ public interface Contract {
 
   interface Model {
 
+    void cityNameIsOk(String cityName);
   }
 }

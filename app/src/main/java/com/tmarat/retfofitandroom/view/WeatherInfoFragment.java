@@ -1,4 +1,4 @@
-package com.tmarat.retfofitandroom;
+package com.tmarat.retfofitandroom.view;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,8 +11,11 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.tmarat.retfofitandroom.common.Contract;
+import com.tmarat.retfofitandroom.presenter.Presenter;
+import com.tmarat.retfofitandroom.R;
 
-public class WeatherInfoFragment extends Fragment implements Contract.View{
+public class WeatherInfoFragment extends Fragment implements Contract.View {
   private EditText editTextCityName;
   private TextView textViewCity;
   private TextView textViewTem;

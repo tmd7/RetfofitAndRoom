@@ -1,4 +1,6 @@
-package com.tmarat.retfofitandroom;
+package com.tmarat.retfofitandroom.model;
+
+import com.tmarat.retfofitandroom.common.Contract;
 
 public class Model implements Contract.Model {
 

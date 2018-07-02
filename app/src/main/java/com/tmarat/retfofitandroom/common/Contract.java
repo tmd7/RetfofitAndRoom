@@ -1,4 +1,4 @@
-package com.tmarat.retfofitandroom;
+package com.tmarat.retfofitandroom.common;
 
 public interface Contract {
 

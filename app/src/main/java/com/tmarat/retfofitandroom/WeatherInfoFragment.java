@@ -23,7 +23,7 @@ public class WeatherInfoFragment extends Fragment implements Contract.View{
 
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    presenter = new Presenter();
+    presenter = new Presenter(this);
   }
 
   @Nullable @Override

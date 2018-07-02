@@ -10,9 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class WeatherInfoFragment extends Fragment implements Contract.View{
-  private EditText editTextCity;
+  private EditText editTextCityName;
   private TextView textViewCity;
   private TextView textViewTem;
   private TextView textViewHum;
@@ -36,7 +37,7 @@ public class WeatherInfoFragment extends Fragment implements Contract.View{
   }
 
   private void initUI(View view) {
-    editTextCity = view.findViewById(R.id.edit_city);
+    editTextCityName = view.findViewById(R.id.edit_city);
     textViewCity = view.findViewById(R.id.text_view_city);
     textViewTem = view.findViewById(R.id.text_view_tem);
     textViewHum = view.findViewById(R.id.text_view_hum);
@@ -46,8 +47,12 @@ public class WeatherInfoFragment extends Fragment implements Contract.View{
   private void setButtonOnClickListener(View view) {
     view.findViewById(R.id.bt_ok).setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
-        presenter.getUserInput(editTextCity.getText().toString());
+        presenter.getUserInput(editTextCityName.getText().toString());
       }
     });
+  }
+
+  @Override public void showToast(int resId) {
+    Toast.makeText(getContext(),resId, Toast.LENGTH_SHORT).show();
   }
 }

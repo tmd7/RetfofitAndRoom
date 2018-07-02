@@ -3,11 +3,12 @@ package com.tmarat.retfofitandroom;
 public interface Contract {
 
   interface View {
+    void showToast(int resId);
   }
 
   interface Presenter {
 
-    void getUserInput(String userInput);
+    void getUserInput(String cityName);
   }
 
   interface Model {

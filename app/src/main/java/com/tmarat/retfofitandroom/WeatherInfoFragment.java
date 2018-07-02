@@ -19,6 +19,13 @@ public class WeatherInfoFragment extends Fragment implements Contract.View{
   private TextView textViewPress;
   private RecyclerView recyclerView;
 
+  private Contract.Presenter presenter;
+
+  @Override public void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    presenter = new Presenter();
+  }
+
   @Nullable @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
@@ -42,5 +49,9 @@ public class WeatherInfoFragment extends Fragment implements Contract.View{
         //some event
       }
     });
+  }
+
+  @Override public String getUserInput() {
+    return editTextCity.getText().toString();
   }
 }

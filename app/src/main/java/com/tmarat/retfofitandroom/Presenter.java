@@ -3,7 +3,7 @@ package com.tmarat.retfofitandroom;
 public class Presenter implements Contract.Presenter {
   private Contract.Model model;
 
-  Presenter(WeatherInfoFragment view) {
+  Presenter(Contract.View view) {
     this.model = new Model();
   }
 

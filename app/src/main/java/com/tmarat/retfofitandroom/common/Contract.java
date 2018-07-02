@@ -1,5 +1,4 @@
 package com.tmarat.retfofitandroom.common;
-
 public interface Contract {
 
   interface View {
@@ -17,6 +16,5 @@ public interface Contract {
   }
 
   interface OpenWeather {
-    //@GET()
   }
 }

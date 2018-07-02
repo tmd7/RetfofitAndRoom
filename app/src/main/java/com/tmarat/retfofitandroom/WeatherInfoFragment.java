@@ -46,12 +46,8 @@ public class WeatherInfoFragment extends Fragment implements Contract.View{
   private void setButtonOnClickListener(View view) {
     view.findViewById(R.id.bt_ok).setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
-        //some event
+        presenter.getUserInput(editTextCity.getText().toString());
       }
     });
-  }
-
-  @Override public String getUserInput() {
-    return editTextCity.getText().toString();
   }
 }

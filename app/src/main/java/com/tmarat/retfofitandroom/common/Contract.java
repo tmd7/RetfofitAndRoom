@@ -15,4 +15,8 @@ public interface Contract {
 
     void cityNameIsOk(String cityName);
   }
+
+  interface OpenWeather {
+    //@GET()
+  }
 }

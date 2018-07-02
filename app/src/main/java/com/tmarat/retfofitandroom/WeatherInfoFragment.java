@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class WeatherInfoFragment extends Fragment {
+public class WeatherInfoFragment extends Fragment implements Contract.View{
   private EditText editTextCity;
   private TextView textViewCity;
   private TextView textViewTem;

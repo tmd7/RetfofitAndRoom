@@ -4,6 +4,7 @@ import com.tmarat.retfofitandroom.common.CallBack;
 import com.tmarat.retfofitandroom.common.Contract;
 import com.tmarat.retfofitandroom.model.Model;
 import com.tmarat.retfofitandroom.R;
+import com.tmarat.retfofitandroom.model.WeatherInfoPojo;
 
 public class Presenter implements Contract.Presenter {
 
@@ -26,11 +27,16 @@ public class Presenter implements Contract.Presenter {
       //if city name is OK uses method in model with a city name and a callback
       model.cityNameIsOk(cityName, new CallBack.Response() {
         @Override public void failure() {
-
           //if response is null
           view.showToast(R.string.response_is_empty);
         }
+      }, new CallBack.ResponseIsOk() {
+        @Override public void getWeather(WeatherInfoPojo weatherInfo) {
+          view.setWeather(weatherInfo);
+        }
       });
+
+
     }
   }
 }

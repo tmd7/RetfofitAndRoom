@@ -1,8 +1,8 @@
 package com.tmarat.retfofitandroom.model.network;
 
 import com.tmarat.retfofitandroom.common.Contract;
+import com.tmarat.retfofitandroom.model.network.jsonpojo.WeatherRequest;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;

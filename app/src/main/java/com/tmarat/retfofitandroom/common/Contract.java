@@ -1,6 +1,7 @@
 package com.tmarat.retfofitandroom.common;
 
-import com.tmarat.retfofitandroom.model.network.WeatherRequest;
+import com.tmarat.retfofitandroom.model.WeatherInfoPojo;
+import com.tmarat.retfofitandroom.model.network.jsonpojo.WeatherRequest;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -8,6 +9,8 @@ import retrofit2.http.Query;
 public interface Contract {
 
   interface View {
+    void setWeather(WeatherInfoPojo weather);
+
     void showToast(int resId);
   }
 
@@ -18,7 +21,8 @@ public interface Contract {
 
   interface Model {
 
-    void cityNameIsOk(String cityName, CallBack.Response response);
+    void cityNameIsOk(String cityName, CallBack.Response response,
+        CallBack.ResponseIsOk responseIsOk);
 
   }
 

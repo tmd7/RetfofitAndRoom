@@ -18,7 +18,8 @@ public interface Contract {
 
   interface Model {
 
-    void cityNameIsOk(String cityName);
+    void cityNameIsOk(String cityName, CallBack.Response response);
+
   }
 
   interface OpenWeather {

@@ -1,47 +1,38 @@
 package com.tmarat.retfofitandroom.model.network;
 
 import com.tmarat.retfofitandroom.common.Contract;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MyRetrofit {
 
-  private static final String API = "be4254a9c1592f329d3b479b522e69c3";
   private static final String BASE_URL = "http://api.openweathermap.org/";
+  private static final String API = "be4254a9c1592f329d3b479b522e69c3";
 
-  private Contract.OpenWeather openWeather;
-
-  public MyRetrofit(String cityName) {
-    initRetrofit();
-    requestRetrofit(cityName);
+  private MyRetrofit() {
   }
 
-  private void initRetrofit() {
+  public static Call<WeatherRequest> initRetrofit(String cityName) {
+    //Does a request with base url + gson
     Retrofit retrofit = new Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
+        .client(getClient())
         .build();
 
-    openWeather = retrofit.create(Contract.OpenWeather.class);
+    return retrofit.create(Contract.OpenWeather.class).loadWeather(cityName, API);
   }
 
-  private void requestRetrofit(String cityName) {
-    openWeather.loadWeather(cityName, API).enqueue(new Callback<WeatherRequest>() {
-      @Override
-      public void onResponse(Call<WeatherRequest> call, Response<WeatherRequest> response) {
-        if (response.body() !=null) {
-          // TODO: 03.07.2018 to add response in LiveData
-        } else {
-          // TODO: 03.07.2018 callBack to presenter
-        }
-      }
+  private static OkHttpClient getClient() {
+    OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
-      @Override public void onFailure(Call<WeatherRequest> call, Throwable t) {
-        // TODO: 03.07.2018 CallBack to presenter
-      }
-    });
+    HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+    logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+    httpClient.addInterceptor(logging);
+    return httpClient.build();
   }
 }

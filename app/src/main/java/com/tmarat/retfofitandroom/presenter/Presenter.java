@@ -25,9 +25,9 @@ public class Presenter implements Contract.Presenter {
 
       //if city name is OK uses method in model with a city name and a callback
       model.cityNameIsOk(cityName, new CallBack.Response() {
-        @Override public void bodyIsNull() {
+        @Override public void failure() {
 
-          //if response.body is null
+          //if response is null
           view.showToast(R.string.response_is_empty);
         }
       });

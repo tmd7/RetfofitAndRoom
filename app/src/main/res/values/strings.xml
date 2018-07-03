@@ -6,5 +6,5 @@
   <string name="hum_d">Hum.: %d</string>
   <string name="press_d">Press.: %d</string>
   <string name="empty">The city name field is empty</string>
-  <string name="response_is_empty">The server response body is empty</string>
+  <string name="response_is_empty">The server response is failure</string>
 </resources>

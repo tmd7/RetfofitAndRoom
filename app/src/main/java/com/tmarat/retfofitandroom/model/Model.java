@@ -27,15 +27,7 @@ public class Model implements Contract.Model {
         if (response.body() == null) {
           callBackResponse.failure();
         } else {
-          //Adds some weather data to a pojo class from response.body
-          WeatherInfoPojo weatherInfo = new WeatherInfoPojo();
-          weatherInfo.setCityName(cityName);
-          weatherInfo.setTem(String.valueOf(response.body().getTemp()));
-          weatherInfo.setHum(String.valueOf(response.body().getHumidity()));
-          weatherInfo.setPress(String.valueOf(response.body().getPressure()));
-
-          //Posts a pojo class object into Live data
-          new LiveDataWeatherViewModel().getLiveDataWeather().postValue(weatherInfo);
+          postResponseIntoLiveData(response, cityName);
         }
       }
 
@@ -43,5 +35,17 @@ public class Model implements Contract.Model {
         callBackResponse.failure();
       }
     });
+  }
+
+  private void postResponseIntoLiveData(Response<WeatherRequest> response, String cityName) {
+    //Adds some weather data to a pojo class from response.body
+    WeatherInfoPojo weatherInfo = new WeatherInfoPojo();
+    weatherInfo.setCityName(cityName);
+    weatherInfo.setTem(String.valueOf(response.body().getTemp()));
+    weatherInfo.setHum(String.valueOf(response.body().getHumidity()));
+    weatherInfo.setPress(String.valueOf(response.body().getPressure()));
+
+    //Posts a pojo class object into Live data
+    new LiveDataWeatherViewModel().getLiveDataWeather().postValue(weatherInfo);
   }
 }

@@ -1,5 +1,6 @@
 package com.tmarat.retfofitandroom.model;
 
+import android.util.Log;
 import com.tmarat.retfofitandroom.common.CallBack;
 import com.tmarat.retfofitandroom.common.Contract;
 import com.tmarat.retfofitandroom.model.network.MyRetrofit;
@@ -10,6 +11,8 @@ import retrofit2.Response;
 
 public class Model implements Contract.Model {
 
+  private static final String TAG = Model.class.getSimpleName();
+
   @Override public void cityNameIsOk(String cityName,
       CallBack.Response callBackResponse) {
 
@@ -19,20 +22,24 @@ public class Model implements Contract.Model {
 
   private void doRetrofitRequest(final String cityName,
       final CallBack.Response callBackResponse) {
-
+    Log.d(TAG, "doRetrofitRequest: Start");
     //Uses a retrofit fabric method which returns Call<WeatherRequest>. Does async request
     MyRetrofit.initRetrofit(cityName).enqueue(new Callback<WeatherRequest>() {
       @Override
       public void onResponse(Call<WeatherRequest> call, Response<WeatherRequest> response) {
         if (response.body() == null) {
+          Log.d(TAG, "onResponse: body == null");
           callBackResponse.failure();
         } else {
+          Log.d(TAG, "onResponse: body != null");
           postResponseIntoLiveData(response, cityName);
         }
       }
 
       @Override public void onFailure(Call<WeatherRequest> call, Throwable t) {
         callBackResponse.failure();
+        Log.d(TAG, "onFailure"
+            + "");
       }
     });
   }

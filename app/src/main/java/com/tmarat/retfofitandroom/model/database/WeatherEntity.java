@@ -14,7 +14,7 @@ public class WeatherEntity {
   private String cityName;
 
   @ColumnInfo(name = "tem")
-  private float tem;
+  private Double tem;
 
   @ColumnInfo(name = "hum")
   private int hum;
@@ -26,28 +26,28 @@ public class WeatherEntity {
     return cityName;
   }
 
-  public void setCityName(@NonNull String cityName) {
-    this.cityName = cityName;
-  }
-
-  public float getTem() {
+  public Double getTem() {
     return tem;
-  }
-
-  public void setTem(float tem) {
-    this.tem = tem;
   }
 
   public int getHum() {
     return hum;
   }
 
-  public void setHum(int hum) {
-    this.hum = hum;
-  }
-
   public int getPress() {
     return press;
+  }
+
+  public void setCityName(@NonNull String cityName) {
+    this.cityName = cityName;
+  }
+
+  public void setTem(Double tem) {
+    this.tem = tem;
+  }
+
+  public void setHum(int hum) {
+    this.hum = hum;
   }
 
   public void setPress(int press) {

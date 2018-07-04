@@ -1,10 +1,14 @@
 package com.tmarat.retfofitandroom.model;
 
 import android.util.Log;
+import com.tmarat.retfofitandroom.App;
 import com.tmarat.retfofitandroom.common.CallBack;
 import com.tmarat.retfofitandroom.common.Contract;
 import com.tmarat.retfofitandroom.common.pojo.WeatherInfo;
 import com.tmarat.retfofitandroom.common.pojo.WeatherRequest;
+import com.tmarat.retfofitandroom.model.database.WeatherDao;
+import com.tmarat.retfofitandroom.model.database.WeatherDataBase;
+import com.tmarat.retfofitandroom.model.database.WeatherEntity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -14,6 +18,13 @@ public class Model implements Contract.Model {
   private static final String TAG = Model.class.getSimpleName();
   private static final String NO_DATA = "no data";
   private WeatherInfo weatherInfo;
+
+  private WeatherDataBase db;
+  private WeatherDao weatherDao;
+
+  public WeatherInfo getWeatherInfo() {
+    return weatherInfo;
+  }
 
   @Override public void cityNameIsOk(String cityName,
       CallBack.Response callBackResponse,
@@ -39,6 +50,9 @@ public class Model implements Contract.Model {
           Log.d(TAG, "onResponse: body != null");
           checkAndWrapResponse(response);
           responseIsOk.getWeather(weatherInfo);
+
+          //inserts weather data to db
+          insertWeatherIntoDb(response);
         }
       }
 
@@ -75,5 +89,21 @@ public class Model implements Contract.Model {
     } else {
       weatherInfo.setPress(NO_DATA);
     }
+  }
+
+  private void insertWeatherIntoDb(Response<WeatherRequest> response) {
+    db = App.getInstance().getDataBase();
+    weatherDao = db.weatherDao();
+    final WeatherEntity weather = new WeatherEntity();
+    weather.setCityName(response.body().getName());
+    weather.setTem(response.body().getMain().getTemp());
+    weather.setHum(response.body().getMain().getHumidity());
+    weather.setPress(response.body().getMain().getPressure());
+
+    new Thread(new Runnable() {
+      @Override public void run() {
+        weatherDao.insert(weather);
+      }
+    }).start();
   }
 }

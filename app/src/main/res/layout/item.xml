@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_med"
+    android:showDividers="middle"
+    android:divider="@drawable/spacer_med"
+
+    >
+
+  <TextView
+      android:id="@+id/item_city"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      tools:text="Moscow"
+      />
+
+  <TextView
+      android:id="@+id/item_tem"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      tools:text="30"
+      />
+
+  <TextView
+      android:id="@+id/item_hum"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      tools:text="1024"
+      />
+
+  <TextView
+      android:id="@+id/item_press"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      tools:text="768"
+      />
+
+</LinearLayout>

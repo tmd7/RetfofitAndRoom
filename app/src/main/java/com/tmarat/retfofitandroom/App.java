@@ -13,7 +13,7 @@ public class App extends Application {
   @Override public void onCreate() {
     super.onCreate();
     instance = this;
-    dataBase = Room.databaseBuilder(this, WeatherDataBase.class, "weather").build();
+    dataBase = Room.databaseBuilder(this, WeatherDataBase.class, "main_db").build();
   }
 
   public static App getInstance() {

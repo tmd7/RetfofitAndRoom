@@ -1,6 +1,6 @@
-package com.tmarat.retfofitandroom.model;
+package com.tmarat.retfofitandroom.common.pojo;
 
-public class WeatherInfoPojo {
+public class WeatherInfo {
   private String cityName;
   private String tem;
   private String hum;

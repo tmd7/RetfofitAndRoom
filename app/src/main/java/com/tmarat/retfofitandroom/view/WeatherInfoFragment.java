@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.tmarat.retfofitandroom.R;
 import com.tmarat.retfofitandroom.common.Contract;
-import com.tmarat.retfofitandroom.model.WeatherInfoPojo;
+import com.tmarat.retfofitandroom.common.pojo.WeatherInfo;
 import com.tmarat.retfofitandroom.presenter.Presenter;
 
 public class WeatherInfoFragment extends Fragment implements Contract.View {
@@ -59,7 +59,7 @@ public class WeatherInfoFragment extends Fragment implements Contract.View {
     });
   }
 
-  @Override public void setWeather(WeatherInfoPojo weather) {
+  @Override public void setWeather(WeatherInfo weather) {
     textViewCity.setText(weather.getCityName());
     textViewTem.setText(weather.getTem());
     textViewHum.setText(weather.getHum());

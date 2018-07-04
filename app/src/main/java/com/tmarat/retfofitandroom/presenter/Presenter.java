@@ -4,7 +4,7 @@ import com.tmarat.retfofitandroom.common.CallBack;
 import com.tmarat.retfofitandroom.common.Contract;
 import com.tmarat.retfofitandroom.model.Model;
 import com.tmarat.retfofitandroom.R;
-import com.tmarat.retfofitandroom.model.WeatherInfoPojo;
+import com.tmarat.retfofitandroom.common.pojo.WeatherInfo;
 
 public class Presenter implements Contract.Presenter {
 
@@ -31,7 +31,7 @@ public class Presenter implements Contract.Presenter {
           view.showToast(R.string.response_is_empty);
         }
       }, new CallBack.ResponseIsOk() {
-        @Override public void getWeather(WeatherInfoPojo weatherInfo) {
+        @Override public void getWeather(WeatherInfo weatherInfo) {
           view.setWeather(weatherInfo);
         }
       });

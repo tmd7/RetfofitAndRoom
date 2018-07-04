@@ -3,8 +3,8 @@ package com.tmarat.retfofitandroom.model;
 import android.util.Log;
 import com.tmarat.retfofitandroom.common.CallBack;
 import com.tmarat.retfofitandroom.common.Contract;
-import com.tmarat.retfofitandroom.model.network.MyRetrofit;
-import com.tmarat.retfofitandroom.model.network.jsonpojo.WeatherRequest;
+import com.tmarat.retfofitandroom.common.pojo.WeatherInfo;
+import com.tmarat.retfofitandroom.common.pojo.WeatherRequest;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -13,7 +13,7 @@ public class Model implements Contract.Model {
 
   private static final String TAG = Model.class.getSimpleName();
   private static final String NO_DATA = "no data";
-  private  WeatherInfoPojo weatherInfo;
+  private WeatherInfo weatherInfo;
 
   @Override public void cityNameIsOk(String cityName,
       CallBack.Response callBackResponse,
@@ -53,7 +53,7 @@ public class Model implements Contract.Model {
     Log.d(TAG, "postResponseIntoLiveData");
 
     //Adds some weather data to a pojo class from response.body
-    weatherInfo = new WeatherInfoPojo();
+    weatherInfo = new WeatherInfo();
 
     if (response.body().getName() != null) {
       weatherInfo.setCityName(response.body().getName());

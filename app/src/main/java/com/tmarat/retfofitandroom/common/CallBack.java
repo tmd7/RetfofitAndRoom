@@ -1,6 +1,6 @@
 package com.tmarat.retfofitandroom.common;
 
-import com.tmarat.retfofitandroom.model.WeatherInfoPojo;
+import com.tmarat.retfofitandroom.common.pojo.WeatherInfo;
 
 public interface CallBack {
   interface Response {
@@ -8,6 +8,6 @@ public interface CallBack {
   }
 
   interface ResponseIsOk {
-    void getWeather(WeatherInfoPojo weatherInfo);
+    void getWeather(WeatherInfo weatherInfo);
   }
 }
